@@ -2,7 +2,9 @@ import React from 'react'
 
 const SearchResults = () => {
   return (
-    <section>
+    <section className='search-results'>
+    {/* HR Line Above Search Results */}
+        <hr className='results-divider'/>
         <h3>Search results for <span>"Fast"</span></h3>
 
         <div className='price-range'>
