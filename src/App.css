@@ -11,10 +11,10 @@ body{
 }
 /* ======HERO SECTION ===== */
 .hero{
-  background-image: url('./assets/parking-bg.jpg');
+  background-image: url('./assets/raban-haaijk-wftNpcjCHT4-unsplash.jpg');
   background-size: cover;
   background-position: center;
-  height: 320vh;
+  height: 50vh;
   position: relative;
 }
 
@@ -28,9 +28,15 @@ body{
   justify-content: space-between;
 }
 .nav{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 .logo{
@@ -81,13 +87,22 @@ Hero Content
 /* 
 Search Box
  */
+.search-section{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  width: 100%;
+}
+
 .search-box{
   display:inline-flex;
   align-items: center;
   background: white;
   border-radius: 25px;
   overflow: hidden;
-  max-width: 90%;
+  max-width: 70%;
 }
 .search-box input{
   border:none;
@@ -97,6 +112,14 @@ Search Box
   outline: none;
   font-size: 0.95rem;
 }
+.search-btn{
+  background:#6C63FF;
+  color:white;
+  border:none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+}
 .search-box button{
   background: #6C63FF;
   color:white;
@@ -105,7 +128,62 @@ Search Box
   cursor: pointer;
   font-size: 1rem;
 }
+.dark-toggle-btn{
+  position: absolute;
+  right: 10%;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.dark-toggle-btn:hover{
+  background: #555;
+}
+/* ===== DARK MODE ===== */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
 
+body.dark-mode .hero {
+  background-image: none;
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .nav-links a {
+  color: #ddd;
+}
+
+body.dark-mode .nav-links button {
+  background: #333;
+  color: white;
+}
+
+body.dark-mode .search-box {
+  background: #222;
+}
+
+body.dark-mode .search-box input {
+  background: #222;
+  color: white;
+}
+
+body.dark-mode .search-box button {
+  background: #6c63ff;
+}
+
+body.dark-mode .dark-toggle-btn {
+  background: #f1f1f1;
+  color: #333;
+}
 /* Results */
 .results{
   text-align: center;
@@ -117,6 +195,17 @@ Search Box
   font-weight: 600;
   color:#6C63FF;
 }
+.results-divider {
+  width: 90%;
+  margin: 40px auto 20px;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+/* When dark mode is active */
+body.dark-mode .results-divider {
+  border-top: 1px solid white;
+}
+/* Price Range Slider */
 .price-range{
   margin-top: 20px;
   font-size: 14px;
@@ -157,6 +246,38 @@ Search Box
 .no-results button:hover{
   background:#574fd6;
 }
+
+/* ===== BURGER MENU ===== */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  position: absolute;
+  top:20px;
+  right:25px;
+  z-index: 20;
+}
+
+.burger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Burger animation */
+.burger.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.burger.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
 /* Tablets and smaller laptops */
@@ -180,14 +301,47 @@ Search Box
 
 /* Mobile */
 @media (max-width: 600px) {
-  .nav {
+  .burger {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    z-index: 20;
+    gap: 5px;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
   }
 
   .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.85);
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 1rem;
+    padding: 15px 25px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a,
+  .nav-links button {
+    color: white;
   }
 
   .hero-content h2 {
@@ -195,12 +349,38 @@ Search Box
     margin-bottom: 15px;
   }
 
+  /* Stack search and dark mode vertically */
+  .search-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: static;
+  }
+
   .search-box {
-    width: 100%;
+    width: 90%;
+    max-width: 350px;
   }
 
   .search-box input {
     width: 100%;
+  }
+
+  /* Move dark mode button below search box */
+  .dark-toggle-btn {
+    position: static;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .dark-toggle-btn:hover {
+    background: #555;
   }
 
   .price-range {
