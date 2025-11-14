@@ -128,6 +128,17 @@ Search Box
   cursor: pointer;
   font-size: 1rem;
 }
+
+.search-results{
+  text-align: center;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.search-results h3 {
+  margin-bottom: 20px;
+}
+
+/* DARK MODE */
 .dark-toggle-btn{
   position: absolute;
   right: 10%;
@@ -207,8 +218,11 @@ body.dark-mode .results-divider {
 }
 /* Price Range Slider */
 .price-range{
-  margin-top: 20px;
+  margin-top: 30px; /* Space above the price range */
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .price-range input[type='range']{
   width: 200px;
