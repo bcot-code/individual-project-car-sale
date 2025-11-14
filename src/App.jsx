@@ -1,13 +1,13 @@
-import React from 'react'
-import Header from './components/Header.jsx';
-import SearchResults from './components/SearchResults.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home.jsx';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <SearchResults />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes> 
+    </BrowserRouter>
   )
 }
 
