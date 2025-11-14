@@ -7,11 +7,13 @@ const Header = () => {
     useEffect(() => {
         document.body.classList.toggle('dark-mode', darkMode);
     }, [darkMode]);
+
+
   return (
     <header className="hero">
       <div className="overlay">
         <div className="nav">
-          <h1 className="logo">Car Sale</h1>
+          <h1 className="logo" onClick={() => window.location.href = '/'}>Car Sale</h1>
 
         {/* BURGER MENU (mobile) */}
           <div 
