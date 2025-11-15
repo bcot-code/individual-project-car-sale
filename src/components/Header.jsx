@@ -1,19 +1,26 @@
 import React,{ useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    
+    const [query, setQuery] = useState('');
+    const navigate = useNavigate();
+
     useEffect(() => {
         document.body.classList.toggle('dark-mode', darkMode);
     }, [darkMode]);
 
+    const handleSearch = () => {
+        if(query.trim()) return navigate(`/find-cars?query=${query}`);
+    }
 
   return (
     <header className="hero">
       <div className="overlay">
         <div className="nav">
-          <h1 className="logo" onClick={() => window.location.href = '/'}>Car Sale</h1>
+          <h1 className="logo" onClick={() => navigate('/')}>Car Sale</h1>
 
         {/* BURGER MENU (mobile) */}
           <div 
@@ -26,8 +33,8 @@ const Header = () => {
           </div>
           
           <div className={`nav-links${menuOpen ? ' active' : ''}`}>
-            <a href="#">Home</a>
-            <a href="#">Find your car</a>
+            <Link to="/">Home</Link>
+            <Link to="/find-cars">Find your car</Link>
             <button>Contact</button>
           </div>
         </div>
@@ -42,8 +49,11 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search by make, model, type..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               />
-              <button className='search-btn'>🔍</button>
+              <button className="search-btn" onClick={handleSearch}>🔍</button>
             </div>
 
             {/* DARK MODE BUTTON */}
