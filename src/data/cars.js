@@ -29,7 +29,7 @@ export const cars = [
     type: "Sedan",
     price: 59999,
     mileage: "45,320 km",
-    image: "https://images.pexels.com/photos/114983/pexels-photo-114983.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/images/mercedes-s-500.png",
   },
   {
     id: 4,
