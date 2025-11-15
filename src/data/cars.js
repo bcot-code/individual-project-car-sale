@@ -79,7 +79,7 @@ export const cars = [
     type: "SUV",
     price: 43000,
     mileage: "60,000 km",
-    image: "/images/bmw-x5-2018.png",
+    image: "/images/bmw-x5.png",
   },
   {
     id: 9,
