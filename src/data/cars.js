@@ -69,7 +69,7 @@ export const cars = [
     type: "SUV",
     price: 72000,
     mileage: "30,200 km",
-    image: "/public/images/GLE Coupe.png",
+    image: "/images/gle-coupe.png",
   },
   {
     id: 8,
@@ -79,7 +79,7 @@ export const cars = [
     type: "SUV",
     price: 43000,
     mileage: "60,000 km",
-    image: "/public/images/BMW-X5-2018.png",
+    image: "/images/bmw-x5-2018.png",
   },
   {
     id: 9,
