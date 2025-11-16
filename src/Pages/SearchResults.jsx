@@ -32,7 +32,7 @@ const SearchResults = () => {
         <div className='price-range'>
             <label>Max price:</label>
             <span>Up to ${price}</span>
-            <input type="range" id="myRange" min="0" max="250000" value={price} onChange={(e) => updateValue(e.target.value)}/>
+            <input type="range" id="myRange" min="0" max="250000" value={price} onInput={(e) => updateValue(e.target.value)}/>
         </div>
 
         <div>

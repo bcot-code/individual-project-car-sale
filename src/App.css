@@ -2,30 +2,62 @@
   box-sizing: border-box;
   margin:0;
   padding:0;
-  font-family: 'Inter', sans-serif;
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 30px;
 }
 
-body{
-  background-color: #fff;
-  color: #222;
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 /* ======HERO SECTION ===== */
 .hero{
   background-image: url('./assets/raban-haaijk-wftNpcjCHT4-unsplash.jpg');
   background-size: cover;
   background-position: center;
-  height: 50vh;
+  height: 36vh;
+  font-size: 20px;
   position: relative;
 }
 
 .home-hero {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  gap: 20px;
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 100px;
+  padding-top: 120px;
+  flex: 1;
+}
+/* HOME HERO TEXT FIX */
+.home-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.home-hero p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #555;
+  max-width: 520px;
+  text-align: center;
+  line-height: 1.55;
+}
+.home-hero img{
+  max-width: 380px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 .overlay{
@@ -87,7 +119,7 @@ Hero Content
  */
 .hero-content{
   text-align: center;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .hero-content h2{
   font-size: 2rem;
@@ -254,6 +286,10 @@ body.dark-mode .results-divider {
   align-items: center;
   gap: 12px;
 }
+.price-range span{
+  display: inline;
+  width: 130px;
+}
 .price-range input[type='range']{
   width: 200px;
   accent-color: #673ab7;
@@ -331,7 +367,7 @@ body.dark-mode .results-divider {
   justify-content: center;
 }
 .car-card{
-  width: 250px;
+  width: 350px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
@@ -344,11 +380,11 @@ body.dark-mode .results-divider {
 }
 .car-card img{
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
 }
 .car-info {
-  padding: 15px;
+  padding: 25px;
 }
 
 .view-details {
@@ -366,20 +402,94 @@ body.dark-mode .results-divider {
   background-color: #0056b3;
 }
 /* === FOOTER ==== */
-footer{
-  background:#222;
-  color:#ccc;
-  text-align: center;
-  padding: 20px 10px;
-  margin-top: 40px;
-  font-size: 0.9rem;
+.footer{
+  margin-top: auto;
+  width: 100%;
+  background-color: #1e1e1e;
+  color: white;
+  padding: 60px 40px;
 }
-footer a{
-  color:#6C63FF;
+.footer-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+.footer-col h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-col .links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-col .links li {
+  margin-bottom: 10px;
+}
+
+.footer-col .links a {
   text-decoration: none;
+  color: #bfbfbf;
+  transition: color 0.3s;
 }
-footer a:hover{
-  text-decoration: underline;
+
+.footer-col .links a:hover {
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 15px 0;
+  color: #bfbfbf;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-col input {
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #7489C6;
+  background: none;
+  padding-left: 10px;
+  color: white;
+}
+
+.footer-col input::placeholder {
+  color: #ccc;
+}
+
+.footer-col button {
+  background: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.footer-col button:hover {
+  background: #ddd;
+}
+
+.icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.icons i {
+  color: #afb6c7;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icons i:hover {
+  color: white;
 }
 
 /* Burger animation */
@@ -413,7 +523,21 @@ footer a:hover{
     width: 220px;
   }
 }
-
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+  .footer-row {
+    gap: 1.5rem;
+  }
+  .footer-col form {
+    flex-direction: column;
+  }
+  .footer-col button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 /* Mobile */
 @media (max-width: 600px) {
   .burger {
@@ -469,7 +593,7 @@ footer a:hover{
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    position: static;
+    position: absolute;
   }
 
   .search-box {
@@ -508,7 +632,19 @@ footer a:hover{
     font-size: 0.95rem;
   }
 
+  .home-hero {
+    flex-direction: column;
+  }
+
+  .home-hero > div:first-child {
+    order: 1;
+  }
+
+  .home-hero > div:last-child {
+    order: 2;
+  }
+
   footer{
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 }

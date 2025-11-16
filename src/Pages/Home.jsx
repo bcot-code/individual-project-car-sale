@@ -6,17 +6,19 @@ import Footer from '../components/Footer.jsx';
 const Home = () => {
   return (
     <>
-      <Header />
-      <section className='home-hero'>
-        <div className='hero-content'>
-            <h1>Find Your Dream Car</h1>
-            <p>Explore our extensive collection of vehicles and drive away in style.</p>
-        </div>
-        <div>
-            <img src={carImage} alt="Hero Car" className='hero-image'/>
-        </div>
-      </section>
-      <Footer />
+      <div className="home-container">
+        <Header />
+        <section className='home-hero'>
+          <div className='hero-content'>
+              <h1>Find Your Dream Car</h1>
+              <p>Explore our extensive collection of vehicles and drive away in style.</p>
+          </div>
+          <div>
+              <img src={carImage} alt="Hero Car" className='hero-image'/>
+          </div>
+        </section>
+        <Footer />
+      </div>
     </>
   )
 }
