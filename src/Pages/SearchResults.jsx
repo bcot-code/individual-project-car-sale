@@ -6,13 +6,18 @@ import Categories from '../components/Categories';
 
 
 const SearchResults = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams,setSearhParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const [price, setPrice] = useState(250000);// State to hold the price range value
 
   // Function to update the price value based on the range input
   const updateValue = (value) => {
     setPrice(Number(value));
+  }
+  //Reset Filter : clear the query parameters
+  const resetFilter= () =>{
+    setPrice(250000);
+    setSearhParams({});
   }
   // Filter cars based on query (search in make and model, case insensitive) and price
   const filteredCars = cars.filter(car =>
@@ -32,7 +37,7 @@ const SearchResults = () => {
         <div className='price-range'>
             <label>Max price:</label>
             <span>Up to ${price}</span>
-            <input type="range" id="myRange" min="0" max="250000" value={price} onInput={(e) => updateValue(e.target.value)}/>
+            <input type="range" id="myRange" min="0" max="250000" value={price} onChange={(e) => updateValue(e.target.value)}/>
         </div>
 
         <div>
@@ -48,7 +53,7 @@ const SearchResults = () => {
               />
             <h4>Could not find any matches related to your search.</h4>
             <p>Please change the filter or reset it below.</p>
-            <button onClick={() => setPrice(250000)}>Reset Filter</button>
+            <button onClick={resetFilter}>Reset Filter</button>
           </div>
         )
       )}
